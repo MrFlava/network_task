@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     'rest_auth',
 
     # apps
-    'auth_app'
+    'auth_app',
+    'posts',
 ]
 
 MIDDLEWARE = [
