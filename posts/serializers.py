@@ -1,6 +1,6 @@
 from rest_framework.serializers import ModelSerializer
 
-from posts.models import Post
+from posts.models import Post, Like
 
 
 class PostSerializer(ModelSerializer):
@@ -22,3 +22,16 @@ class PostUpdateSerializer(ModelSerializer):
         model = Post
         fields = ("title", "text")
         read_only_fields = ("user_created", )
+
+
+class LikeSerializer(ModelSerializer):
+
+    class Meta:
+        model = Like
+        fields = ("post", )
+
+    def create(self, validated_data):
+        data = validated_data.copy()
+        data["liked_by"] = self.context["request"].user
+
+        return super().create(data)
