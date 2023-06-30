@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'rest_auth',
     'django_filters',
+    'drf_user_activity_tracker',
 
     # apps
     'auth_app',
@@ -55,6 +56,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'drf_user_activity_tracker.middleware.activity_tracker_middleware.ActivityTrackerMiddleware',
 ]
 
 ROOT_URLCONF = 'social_network.urls'
@@ -149,6 +151,10 @@ JWT_AUTH = {
 
     'JWT_ALLOW_REFRESH': True,
 }
+
+# Activity tracker
+DRF_ACTIVITY_TRACKER_DATABASE = True
+DRF_ACTIVITY_TRACKER_SIGNAL = True
 
 try:
     from social_network.local_settings import *
