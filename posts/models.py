@@ -12,7 +12,7 @@ class Post(models.Model):
 
 
 class Like(models.Model):
-    date_liked = models.DateTimeField(default=datetime.now())
+    date_liked = models.DateField(auto_now=True)
 
     post = models.ForeignKey(Post, on_delete=models.CASCADE)
     liked_by = models.ForeignKey(User, on_delete=models.CASCADE)
