@@ -1,4 +1,4 @@
-from rest_framework.serializers import ModelSerializer
+from rest_framework.serializers import ModelSerializer, DateField, IntegerField
 
 from posts.models import Post, Like
 
@@ -35,3 +35,13 @@ class LikeSerializer(ModelSerializer):
         data["liked_by"] = self.context["request"].user
 
         return super().create(data)
+
+
+class LikeByDaySerializer(ModelSerializer):
+    date_liked = DateField()
+    likes = IntegerField()
+
+    class Meta:
+        model = Like
+        fields = ('date_liked', 'likes')
+
