@@ -21,4 +21,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('v1/auth_app/', include('auth_app.urls')),
     path('v1/posts/', include('posts.urls')),
+    path('activity-logs/', include('drf_user_activity_tracker.urls')),
 ]
